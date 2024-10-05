@@ -4,10 +4,92 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Astro Fishing</title>
+    <title>🚀 Astro Ball</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <header>
+      <div id="navbar">
+        <a href="#hero" id="page-logo">🚀 Astro Ball</a>
+        <div class="link-container">
+          <a href="#problem" class="link">Problem</a>
+          <a href="#solution" class="link">Solution</a>
+          <a href="#rules" class="link">Rules</a>
+          <a href="#demo" class="link">Demo</a>
+          <a href="#team" class="link">Team</a>
+        </div>
+      </div>
+    </header>
+    <section id="hero">
+      <h1 class="center-txt bold-txt hero-txt">🚀 Astro Ball</h1>
+      <p class="center-txt big-txt">The next big microgravity game</p>
+      <p class="center-txt big-txt">Designed for simplicity and intensity</p>
+      <p class="center-txt mid-txt">Compete with a buddy to see who can get the highest score in the shortest amount of time</p>
+    </section>
+    <section id="problem">
+      <h1 class="center-txt bold-txt big-txt header-txt">What challanges do Astronaughts face daily</h1>
+      <p class="center-txt mid-txt">
+        Astronaughts have a very challanging job. 
+        they spend many months away from their famillies and friends in the 
+        hope of advancing our understanding of space and the impacts of zero gravity has on peoples lives.
+      </p>
+      <p class="mid-txt">Some of these challanges include:</p>
+      <ul class="mid-txt">
+        <li>Lack of physical exercise causing muscle and bone deteroration</li>
+        <li>Overwork with 16 hour shifts and everyday being on call</li>
+        <li>Lack of social connection leading to depression</li>
+        <li>Home sickness / Real sickness</li>
+      </ul>
+      <p class="center-txt mid-txt">
+        From what we found so far the games on the international space station 
+        are ones that have no real objective or competitive aspect that solves all the issues that
+        that are present in the list of problems.
+      </p>
+    </section>
+
+    <section id="solution">
+      <h1 class="center-txt bold-txt big-txt header-txt">How Does Astro Ball Solve These Issues</h1>
+      <p class="mid-txt center-txt">
+        Astro Ball aims the use the microgravity enviroment to create a dynamic game 
+        that is simple to understand and solve many issues that astronaughts face. the premise
+        is for two opposing players to throw the ball towards the other players direction but no directly at them.
+      </p>
+      <ul class="mid-txt">
+        <li>Astro Ball requires the users move around the room they in order to catch the ball requiring physical movement</li>
+        <li>Astro Ball creates friendly competition between the players which creates social interaction</li>
+        <li>Astro Ball is not very brain intesive allowing the players to unwind for a little</li>
+        <li>Astro Ball is not a long game so it fits in the 1 hour time limit</li>
+        <li>Astro Ball is similar to games down on earth reliving home sickness</li>
+      </ul>
+      <p class="mid-txt center-txt">
+        Sometimes less is more. astronaughts are already busy enough. The ideal game should be simple and fun.
+      </p>
+    </section>
+
+    <section id="rules">
+      <h1 class="center-txt bold-txt big-txt header-txt">The Rules</h1>
+      <p class="mid-txt center-txt">
+        No game is complete without a set of rules that bind the players into a controlled enviroment.
+        Forcing them to come up with a creative solutions to win and providing ligitimacy to the game.
+      </p>
+      <ul class="mid-txt">
+        <li>players must be as at other ends of the walls</li>
+        <li>players must throw the ball towards the direction of the other player</li>
+        <li>when players catch the ball they will get a point</li>
+        <li>when players don't catch the ball they will lose a point</li>
+        <li>when the timer goes to zero all players must stop</li>
+        <li>The player with the most points win</li>
+      </ul>
+    </section>
+
+    <section id="demo">
+      <h1 class="big-txt bold-txt center-txt">Demo</h1>
+      <div id="vid-container">
+        <img id="video-container" alt="video-container">
+      </div>
+    </section>
+
     <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
