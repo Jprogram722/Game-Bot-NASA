@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, Response
 import uvicorn
 import cv2
+import mediapipe as mp
 import base64
 
 app = FastAPI()
@@ -35,16 +36,38 @@ def getFrame():
     This function returns the frames that were gather from the video from the webcam.
     by using the yeild instead of return the function won't stop after sending data
     """
+
+    mp_drawing = mp.solutions.drawing_utils
+    mp_hands = mp.solutions.hands
+
     cap = cv2.VideoCapture(0)
-    while True:
-        success, frame = cap.read()
-        if not success:
-            continue
-        else:
-            _, buffer = cv2.imencode(".jpg", frame)
-            frame = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n'+frame+b'\r\n')
+    with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands:
+        while cap.isOpened():
+            success, frame = cap.read()
+            if not success:
+                continue
+            else:
+                img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                img = cv2.flip(img, 1)
+                # stop copying
+                img.flags.writeable = False
+                results = hands.process(img)
+                # allow copying
+                img.flags.writeable = True
+                # revert the image back
+                img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+                # print(results)
+
+                # checks to see if we have land marks
+                if results.multi_hand_landmarks:
+                    # loop through land marks
+                    for num, hand in enumerate(results.multi_hand_landmarks):
+                        # draw the marks
+                        mp_drawing.draw_landmarks(img, hand, mp_hands.HAND_CONNECTIONS)
+                _, buffer = cv2.imencode(".jpg", img)
+                img = buffer.tobytes()
+                yield (b'--frame\r\n'
+                    b'Content-Type: image/jpeg\r\n\r\n'+img+b'\r\n')
 
 @app.get("/api/video")
 async def stream():
