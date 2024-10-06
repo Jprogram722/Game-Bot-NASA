@@ -37,6 +37,7 @@ body{
   position: fixed;
   top: 0;
   width: 98vw;
+  z-index: 1;
 }
 
 .link{
