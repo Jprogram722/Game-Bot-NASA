@@ -90,3 +90,7 @@ section {
   display: flex;
   justify-content: center;
 }
+
+.team-members{
+  list-style: none;
+}
